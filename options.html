@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网页二维码生成器设置</title>
+  <link rel="stylesheet" href="styles/options.css">
+</head>
+<body>
+  <h1>设置</h1>
+  <label>
+    二维码大小：
+    <input type="range" id="qrSize" min="100" max="300" step="10">
+    <span id="qrSizeValue"></span>px
+  </label>
+  <label>
+    <input type="checkbox" id="showFavicon">
+    显示网站图标
+  </label>
+  <button id="saveButton">保存设置</button>
+  <script src="options.js"></script>
+</body>
+</html>
