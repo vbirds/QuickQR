@@ -1,4 +1,4 @@
-# QRify: 网页二维码生成器 🌐➡️📱
+# QuickQR: 网页二维码生成器 🌐➡️📱
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/nhkajnmlgmhoelaohocldkjcllijapai.svg)](https://chrome.google.com/webstore/detail/nhkajnmlgmhoelaohocldkjcllijapai)
@@ -6,7 +6,7 @@
 
 QRify是一个轻量级的Chrome扩展，可以将任何网页即时转换为带有网站图标的二维码，实现快速跨设备分享和访问。
 
-![QRify演示](github.png)
+![QuickQR演示](github.png)
 
 ## 🌟 主要特性
 
@@ -32,11 +32,11 @@ QRify是一个轻量级的Chrome扩展，可以将任何网页即时转换为带
 
 1. 克隆仓库:
    ```
-   git clone ttps://github.com/vbirds/QRify.git
+   git clone ttps://github.com/vbirds/QuickQR.git
    ```
 2. 进入项目目录:
    ```
-   cd QRify
+   cd QuickQR
    ```
 3. 在Chrome浏览器中加载扩展:
    - 打开 `chrome://extensions/`
