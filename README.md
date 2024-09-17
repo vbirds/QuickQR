@@ -4,7 +4,7 @@
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/nhkajnmlgmhoelaohocldkjcllijapai.svg)](https://chrome.google.com/webstore/detail/nhkajnmlgmhoelaohocldkjcllijapai)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/nhkajnmlgmhoelaohocldkjcllijapai.svg)](https://chrome.google.com/webstore/detail/nhkajnmlgmhoelaohocldkjcllijapai)
 
-QRify是一个轻量级的Chrome扩展，可以将任何网页即时转换为带有网站图标的二维码，实现快速跨设备分享和访问。
+QuickQR 是一个轻量级的Chrome扩展，可以将任何网页即时转换为带有网站图标的二维码，实现快速跨设备分享和访问。
 
 ![QuickQR演示](github.png)
 
