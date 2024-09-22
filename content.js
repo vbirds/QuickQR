@@ -13,6 +13,28 @@ function createQRCode(url, favicon) {
   const container = document.createElement('div');
   container.className = 'qr-code-container';
   
+  const buttonContainer = document.createElement('div');
+  buttonContainer.className = 'button-container';
+  container.appendChild(buttonContainer);
+
+  const saveButton = document.createElement('button');
+  saveButton.textContent = '保存';
+  saveButton.className = 'qr-button save-button';
+  saveButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    saveQRCodeWithFavicon(qrCodeDiv, favicon);
+  });
+  buttonContainer.appendChild(saveButton);
+
+  const copyButton = document.createElement('button');
+  copyButton.textContent = '复制';
+  copyButton.className = 'qr-button copy-button';
+  copyButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    copyQRCode(qrCodeDiv, favicon);
+  });
+  buttonContainer.appendChild(copyButton);
+
   const qrCodeDiv = document.createElement('div');
   qrCodeDiv.className = 'qr-code';
   container.appendChild(qrCodeDiv);
@@ -30,15 +52,10 @@ function createQRCode(url, favicon) {
     const faviconImg = document.createElement('img');
     faviconImg.src = favicon;
     faviconImg.className = 'favicon';
-    container.appendChild(faviconImg);
+    faviconImg.style.width = '20%';
+    faviconImg.style.height = '20%';
+    qrCodeDiv.appendChild(faviconImg);
   }
-  
-  // 添加保存按钮
-  const saveButton = document.createElement('button');
-  saveButton.textContent = '保存二维码';
-  saveButton.className = 'save-button';
-  saveButton.addEventListener('click', () => saveQRCodeWithFavicon(qrCodeDiv, favicon));
-  container.appendChild(saveButton);
 
   document.body.appendChild(container);
   qrCodeElement = container;
@@ -79,6 +96,46 @@ function saveQRCodeWithFavicon(qrCodeDiv, favicon) {
     link.href = canvas.toDataURL('image/png');
     link.click();
   }
+}
+
+function copyQRCode(qrCodeDiv, favicon) {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  const qrCodeImg = qrCodeDiv.querySelector('img');
+
+  canvas.width = qrSize;
+  canvas.height = qrSize;
+
+  // 绘制二维码
+  ctx.drawImage(qrCodeImg, 0, 0, qrSize, qrSize);
+
+  // 如果有favicon，绘制favicon
+  if (showFavicon && favicon) {
+    const faviconImg = new Image();
+    faviconImg.crossOrigin = 'Anonymous';
+    faviconImg.onload = () => {
+      const faviconSize = qrSize * 0.2;
+      const x = (qrSize - faviconSize) / 2;
+      const y = (qrSize - faviconSize) / 2;
+      ctx.drawImage(faviconImg, x, y, faviconSize, faviconSize);
+      copyToClipboard(canvas);
+    };
+    faviconImg.src = favicon;
+  } else {
+    copyToClipboard(canvas);
+  }
+}
+
+function copyToClipboard(canvas) {
+  canvas.toBlob((blob) => {
+    const item = new ClipboardItem({ "image/png": blob });
+    navigator.clipboard.write([item]).then(() => {
+      alert('二维码已复制到剪贴板');
+    }, (error) => {
+      console.error('复制失败:', error);
+      alert('复制失败,请重试');
+    });
+  });
 }
 
 function toggleQRCode() {
